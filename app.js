@@ -38,6 +38,14 @@ const products = [
     }
 ]
 
+function sortProducts() {
+    const sortField = document.querySelector('#sort-field')
+    const sortDirection = sortField.value
+
+    // sort array of product
+
+}
+
 function getProductsTemplate() {
     let html = ''
     const IMG_PATH = 'https://cdn.pixabay.com/photo'//configuration
@@ -58,8 +66,8 @@ function getProductsTemplate() {
 
 function displayProduct() {
     const container = document.getElementById('products-container')
-    const html = getProductsTemplate()
-    container.innerHTML = html;
+    const productHtml = getProductsTemplate()
+    container.innerHTML = productHtml;
 }
 
 displayProduct()
