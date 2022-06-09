@@ -1,6 +1,6 @@
 const gallery = [
     {
-        image: 'https://cdn.pixabay.com/photo/2016/03/05/19/24/cheese-1238395_960_720.jpg',
+        image: '/public/birds.png',
         name: 'A Great picture',
         author:'Bruno Brave',
         price: 200,
