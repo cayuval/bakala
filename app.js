@@ -61,7 +61,6 @@ function getProductsTemplate() {
                 </div>`;
     })
     return html
-
 }
 
 function displayProduct() {
