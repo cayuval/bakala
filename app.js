@@ -38,12 +38,8 @@ const products = [
     }
 ]
 
-function sortProducts() {
-    const sortField = document.querySelector('#sort-field')
-    const sortDirection = sortField.value
-
-    // sort array of product
-
+function getTotalProduct() {
+    return products.length
 }
 
 function getProductsTemplate() {
@@ -67,6 +63,7 @@ function displayProduct() {
     const container = document.getElementById('products-container')
     const productHtml = getProductsTemplate()
     container.innerHTML = productHtml;
+    document.getElementById('toatal-products').innerHTML = `(${getTotalProduct()})`
 }
 
 displayProduct()
