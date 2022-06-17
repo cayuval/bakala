@@ -33,10 +33,10 @@
 
         <!-- Filter Bar -->
         <div id="fiter-bar">
-            <form action="">
-                <input type="text" name="search" placeholder="Search by name">
-                <button>Search</button>
-            </form>
+            <div>
+                <input id="searchInput" type="text" name="search" placeholder="Search by name">
+                <button type="button" onclick="searchProduct()">Search</button>
+            </div>
             <select name="sort" id="sort-field">
                 <option value="asc">A-Z</option>
                 <option value="desc">Z-A</option>
