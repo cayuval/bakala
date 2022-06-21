@@ -1,3 +1,14 @@
+function addTax(price) {
+    if (!price || price <= 0 || typeof (price) === 'string') {
+        throw Error('price isnt valid')
+    }
+
+    const vat = 1.17 //maam
+    const total = (price * vat).toFixed(2)
+    return Number(total);
+}
+
+
 class Product {
     constructor(price, name, image, description) {
         this.price = price
@@ -12,7 +23,7 @@ class Product {
     }
 
     getPrice() {
-        return `$${this.price}`
+        return `$${addTax( this.price)}`
     }
 
     getName() {
@@ -51,4 +62,4 @@ const products = [
     ),
 ]
 
-export {products}
+export { products }

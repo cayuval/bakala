@@ -1,74 +1,21 @@
 import { products } from './products.js'
 console.log(products);
 
-function addTax(price) {
-    if (!price || price <= 0 || typeof (price) === 'string') {
-        throw Error('price isnt valid')
-    }
-
-    const vat = 1.17 //maam
-    const total = (price * vat).toFixed(2)
-    return Number(total);
-}
-
-
-// class Product {
-//     constructor(price, name, image, description) {
-//         this.price = price
-//         this.name = name
-//         this.image = `https://cdn.pixabay.com/photo${image}`
-//         this.description = description
-//         this.id = this.generateId()
-//     }
-//     generateId() {
-//         const time = new Date().getTime()
-//         return Math.floor(Math.random() * time)
-//     }
-
-//     getPrice() {
-//         return `$${addTax(this.price)}`
-//     }
-
-//     getName() {
-//         return this.name
-//     }
-//     getImg() {
-//         const IMG_PATH = 'https://cdn.pixabay.com/photo'
-//         return `${this.image}`
-//     }
-//     getDescription() {
-//         return this.description
-//     }
-//     getId() {
-//         return this.id
-//     }
+// option1 for search
+// document.getElementById('searchButton').addEventListener('click', searchProduct)
+// function searchProduct() {
+//     const userSearch = document.getElementById('searchInput').value.trim();
+//     const searchResult = products.filter(product => {
+//         return product.name.toLowerCase().includes(userSearch.toLowerCase())
+//     })//brings an Object from The array!!!
+//     console.log(userSearch);
+//     console.log(searchResult);
+//     displayProduct(searchResult)
 // }
 
-// const products = [
-//     new Product(
-//         15,
-//         'yellow cheese',
-//         '/2016/03/05/19/24/cheese-1238395_960_720.jpg',
-//         'great product really!'
-//     ),
-//     new Product(
-//         3,
-//         'ice cream',
-//         '/2017/04/18/15/10/strawberry-ice-cream-2239377_640.jpg',
-//         'be carefull - very cold!'
-//     ),
-//     new Product(
-//         5,
-//         'aaaa',
-//         '/2017/04/18/15/10/strawberry-ice-cream-2239377_640.jpg',
-//         'aaaaaaaaaaaa'
-//     ),
-// ]
-
-
-
-function searchProduct() {
-    const userSearch = document.getElementById('searchInput').value.trim();
+// option2 for search
+window.searchProduct = function(){
+        const userSearch = document.getElementById('searchInput').value.trim();
     const searchResult = products.filter(product => {
         return product.name.toLowerCase().includes(userSearch.toLowerCase())
     })//brings an Object from The array!!!
@@ -76,7 +23,6 @@ function searchProduct() {
     console.log(searchResult);
     displayProduct(searchResult)
 }
-
 function getTotalProduct(productsData) {
     return productsData.length
 }
