@@ -8,42 +8,64 @@ function addTax(price) {
     return Number(total);
 }
 
-function generateId() {
-    // const random = Math.random();
-    // console.log(`rand: ${random}`)
-    // const num = random*10000
-    // console.log(`num: ${num}`)
-    // const floor = Math.floor(num)
-    // console.log(`final: ${floor}`)
-    // return floor;
+// function generateId() {
+//     const time = new Date().getTime()
+//     return Math.floor(Math.random() * time)
+// }
 
-    const time = new Date().getTime()
-    return Math.floor(Math.random() * time)
+class Product {
+    constructor(price, name, image, description) {
+        this.price = price
+        this.name = name
+        this.image = `https://cdn.pixabay.com/photo${image}`
+        this.description = description
+        this.id = this.generateId()
+    }
+    generateId() {
+        const time = new Date().getTime()
+        return Math.floor(Math.random() * time)
+    }
+
+    getPrice() {
+        return `$${addTax(this.price)}`
+    }
+
+    getName() {
+        return this.name
+    }
+    getImg() {
+        const IMG_PATH = 'https://cdn.pixabay.com/photo'
+        return `${this.image}`
+    }
+    getDescription() {
+        return this.description
+    }
+    getId() {
+        return this.id
+    }
 }
 
 const products = [
-    {
-        id: generateId(),
-        price: 15,
-        name: 'yellow cheese',
-        image: '/2016/03/05/19/24/cheese-1238395_960_720.jpg',
-        description: 'great product really!'
-    },
-    {
-        id: generateId(),
-        price: 3,
-        name: 'ice cream',
-        image: '/2017/04/18/15/10/strawberry-ice-cream-2239377_640.jpg',
-        description: 'be carefull - very cold!'
-    },
-    {
-        id: generateId(),
-        price: 5,
-        name: 'aaaa',
-        image: '/2017/04/18/15/10/strawberry-ice-cream-2239377_640.jpg',
-        description: 'aaaaaaaaaaaa'
-    },
+    new Product(
+        15,
+        'yellow cheese',
+        '/2016/03/05/19/24/cheese-1238395_960_720.jpg',
+        'great product really!'
+    ),
+    new Product(
+        3,
+        'ice cream',
+        '/2017/04/18/15/10/strawberry-ice-cream-2239377_640.jpg',
+        'be carefull - very cold!'
+    ),
+    new Product(
+        5,
+        'aaaa',
+        '/2017/04/18/15/10/strawberry-ice-cream-2239377_640.jpg',
+        'aaaaaaaaaaaa'
+    ),
 ]
+
 
 function searchProduct() {
     const userSearch = document.getElementById('searchInput').value.trim();
@@ -68,13 +90,14 @@ function getProductsTemplate(productsData) {
     // runs on the specific specified array and craeting an html for all products together
     productsData.forEach(product => {
         html += `<div class="card" style="margin:5px;width: 18rem;">
-                    <img src="${IMG_PATH}${product.image}" class="card-img-top" alt="${product.description}">
+                    <img src="${product.getImg()}" class="card-img-top" alt="${product.getDescription()}">
                     <div class="card-body">
-                        <h5 class="card-title">${product.name}</h5>
-                        <p class="card-text">$${addTax(product.price)}</p>
+                        <h5 class="card-title">${product.getName()}</h5>
+                        <p class="card-text">${product.getPrice()}</p>
                         <a href="#" class="btn btn-primary">View Details</a>
                     </div>
                 </div>`;
+                console.log(product.getImg());
     })
     // return the html block
     return html
@@ -92,3 +115,4 @@ function displayProduct(productsData = products) {
 }
 
 displayProduct(products)
+console.log(products);
