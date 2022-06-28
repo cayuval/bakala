@@ -1,4 +1,4 @@
-import { products } from './products.js'
+import { products } from './data-modules/products.js'
 console.log(products);
 
 // option1 for search
@@ -14,8 +14,8 @@ console.log(products);
 // }
 
 // option2 for search
-window.searchProduct = function(){
-        const userSearch = document.getElementById('searchInput').value.trim();
+window.searchProduct = function () {
+    const userSearch = document.getElementById('searchInput').value.trim();
     const searchResult = products.filter(product => {
         return product.name.toLowerCase().includes(userSearch.toLowerCase())
     })//brings an Object from The array!!!
